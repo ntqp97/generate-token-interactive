@@ -8,7 +8,7 @@ app = Flask(__name__)
 def hello_world():
     list_token = []
     data = request.get_json()
-    for profile in json.loads(data['profiles']):
+    for profile in data['profiles']:
         private_key = os.environ.get('private_key')
         token = jwt.encode(profile, private_key, algorithm='ES256', )
         list_token.append(token)
